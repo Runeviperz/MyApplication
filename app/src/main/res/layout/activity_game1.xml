@@ -1,0 +1,97 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RNG BOYS"
+        android:textSize="48dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/tvTitle" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Highest Roll"
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:id="@+id/tvTitleHighestRoll"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:id="@+id/tvHighscore"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Roll"
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:id="@+id/tvTitleCurrentRoll"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:id="@+id/tvCurrentRoll"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Rolls"
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:id="@+id/textView"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:id="@+id/tvTotalRolls"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Roll!"
+        android:layout_above="@+id/bReset"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/bRoll"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Reset"
+        android:id="@+id/bReset"
+        />
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Back"
+        android:id="@+id/bGame1Back"
+        />
+
+</LinearLayout>

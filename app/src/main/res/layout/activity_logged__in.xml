@@ -1,0 +1,33 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="48dp"
+        android:text="Success!"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RNG BOYS"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/bGame1"
+        />
+    
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/bBack"
+        />
+
+</LinearLayout>
