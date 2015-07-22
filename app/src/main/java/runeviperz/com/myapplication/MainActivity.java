@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bBegin.setOnClickListener(this);
         tvTitle.setOnClickListener(this);
 
-
         userLocalStore = new UserLocalStore(this);
 
     }
@@ -43,7 +42,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.bBegin:
-                startActivity(new Intent(this, Log_In.class));
+                if (!userLocalStore.getUsername().isEmpty()) {
+                Toast.makeText(MainActivity.this, "Welcome back " + userLocalStore.getName(), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, Logged_In.class));
+                } else {
+                    startActivity(new Intent(this, Log_In.class));
+                }
                 break;
             case R.id.tvTitle:
                 count++;

@@ -1,4 +1,4 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,9 +8,9 @@
     <TextView
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
-        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
         android:textSize="48dp"
-        android:text="Wow"
+        android:text="Login"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content" />
 
@@ -19,6 +19,7 @@
         android:inputType="text"
         android:hint="Username"
         android:id="@+id/etUsername"
+        android:layout_below="@+id/tvLogin"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content" />
 
@@ -27,17 +28,28 @@
         android:hint="Password"
         android:id="@+id/etPassword"
         android:inputType="textPassword"
+        android:layout_below="@+id/etUsername"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/smiley"
+        android:padding="10dp"
+        android:layout_above="@+id/bLogin"
+        android:layout_below="@+id/etPassword"/>
 
     <Button
         android:id="@+id/bLogin"
         android:layout_width="match_parent"
         android:text="Login"
+        android:layout_above="@+id/bRegister"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content" />
 
     <Button
+        android:layout_above="@+id/bReset"
         android:id="@+id/bRegister"
         android:layout_width="match_parent"
         android:text="Register"
@@ -45,12 +57,12 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:layout_alignParentBottom="true"
         android:id="@+id/bReset"
         android:layout_width="match_parent"
         android:text="Reset LocalStore"
-        android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
         android:enabled="false" />
 
 
-</LinearLayout>
+</RelativeLayout>

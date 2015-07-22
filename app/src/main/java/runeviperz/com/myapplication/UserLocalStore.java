@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by Admin on 16/07/2015.
+ * Created by Jacky Liang on 16/07/2015.
  */
+
 public class UserLocalStore {
 
     public static final String SP_NAME = "userDetails";
@@ -38,10 +39,25 @@ public class UserLocalStore {
     public User getRegisteredUser() {
         String username = userLocalDatabase.getString("username", "");
         String password = userLocalDatabase.getString("password", "");
-        User user = new User(username, password);
-        return user;
+        return new User(username, password);
     }
 
+    public String getUsername() {
+        return userLocalDatabase.getString("username", "");
+    }
+
+    public String getName() {
+        return userLocalDatabase.getString("name","");
+    }
+
+    public void logOut() {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putString("name", "");
+        spEditor.putString("username", "");
+        spEditor.putString("password", "");
+        spEditor.putString("age", "");
+        spEditor.commit();
+    }
 //    public void setUserLoggedIn(boolean loggedIn) {
 //        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
 //        spEditor.putBoolean("loggedIn", loggedIn);
@@ -61,8 +77,7 @@ public class UserLocalStore {
     }
 
     public int getHighScore() {
-        int score = userLocalDatabase.getInt("highscore", 0);
-        return score;
+        return userLocalDatabase.getInt("highscore", 0);
     }
 
     public void setTotalRolls(int rolls) {
@@ -72,8 +87,7 @@ public class UserLocalStore {
     }
 
     public int getTotalRolls() {
-        int rolls = userLocalDatabase.getInt("totalRolls", 0);
-        return rolls;
+        return userLocalDatabase.getInt("totalRolls", 0);
     }
 
 }
