@@ -8,11 +8,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RNG BOYS"
+        android:text="R N G B O Y S"
         android:textSize="48dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/tvTitle" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,7 +61,7 @@
         android:text="Total Rolls"
         android:textSize="24dp"
         android:layout_gravity="center"
-        android:id="@+id/textView"
+        android:id="@+id/tvTitleTotalRolls"
         android:layout_marginBottom="10dp"/>
 
     <TextView
@@ -68,22 +73,92 @@
         android:id="@+id/tvTotalRolls"
         android:layout_marginBottom="10dp" />
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Roll!"
-        android:layout_above="@+id/bReset"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/bRoll"
-        />
+        android:layout_height="wrap_content" >
 
-    <Button
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Least Rolls"
+                android:textSize="24dp"
+                android:layout_gravity="center"
+                android:id="@+id/tvTitleLeastRolls"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="24dp"
+                android:layout_gravity="center"
+                android:id="@+id/tvLeastRolls"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Most Rolls"
+                android:textSize="24dp"
+                android:layout_gravity="center"
+                android:id="@+id/tvTitleMostRolls"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="24dp"
+                android:layout_gravity="center"
+                android:id="@+id/tvMostRolls"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Reset"
-        android:id="@+id/bReset"
-        />
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/bRoll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Roll!"
+            android:layout_marginBottom="10dp"
+            />
+
+        <Button
+            android:id="@+id/bRestart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:text="Restart"
+            />
+
+    </LinearLayout>
 
     <Button
         android:layout_alignParentBottom="true"

@@ -17,7 +17,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="RNG BOYS"
+        android:text="R N G B O Y S"
         android:layout_marginBottom="10dp"
         android:id="@+id/bGame1"
         />

@@ -4,9 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by Jacky Liang on 16/07/2015.
+ * Created by Admin on 16/07/2015.
  */
-
 public class UserLocalStore {
 
     public static final String SP_NAME = "userDetails";
@@ -88,6 +87,26 @@ public class UserLocalStore {
 
     public int getTotalRolls() {
         return userLocalDatabase.getInt("totalRolls", 0);
+    }
+
+    public int getLeastRolls() {
+        return userLocalDatabase.getInt("leastRolls", 0);
+    }
+
+    public void setLeastRolls(int rolls) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putInt("leastRolls", rolls);
+        spEditor.commit();
+    }
+
+    public void setMostRolls(int rolls) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putInt("mostRolls", rolls);
+        spEditor.commit();
+    }
+
+    public int getMostRolls() {
+        return userLocalDatabase.getInt("mostRolls", 0);
     }
 
 }
