@@ -13,6 +13,9 @@ import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.net.Socket;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,6 +38,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvTitle.setOnClickListener(this);
 
         userLocalStore = new UserLocalStore(this);
+
+//        public static boolean hostAvailabilityCheck() {
+//            try (Socket s = new Socket(SERVER_ADDRESS, TCP_SERVER_PORT)) {
+//                return true;
+//            } catch (IOException ex) {
+//        /* ignore */
+//            }
+//            return false;
+//        }
 
     }
 
