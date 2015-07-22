@@ -60,7 +60,7 @@ public class Register extends ActionBarActivity implements View.OnClickListener 
 
                 // sends data to server
                 registerUser(registeredData);
-                finish();
+                // finish();
                 break;
             case R.id.bCancel:
                 finish();
@@ -74,6 +74,7 @@ public class Register extends ActionBarActivity implements View.OnClickListener 
         serverRequests.storeUserDataInBackground(user, new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
+                finish();
                 startActivity(new Intent(Register.this, Log_In.class));
             }
         });
