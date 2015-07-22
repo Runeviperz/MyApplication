@@ -14,6 +14,28 @@
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/tvDisclaimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Disclaimer: This app is a created as a way of learning how to code for android. Certain features taken from Tonikami's youtube channel mainly the http/php stuff (sending stuff to my php server because I don't understand it.. yet).
+
+As a note, passwords are stored in PLAIN TEXT (for now) so when creating an account please create a NEW password that is not used for anything else. Any improvements or suggestions are welcome :)"
+        android:layout_below="@+id/tvTitle"
+        />
+
+    <ImageView
+        android:id="@+id/ivSmiley"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/smiley"
+        android:layout_below="@+id/tvDisclaimer"
+        android:layout_above="@+id/bBegin"/>
+
     <Button
         android:layout_alignParentBottom="true"
         android:id="@+id/bBegin"
