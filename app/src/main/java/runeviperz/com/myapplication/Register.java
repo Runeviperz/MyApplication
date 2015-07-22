@@ -56,7 +56,7 @@ public class Register extends ActionBarActivity implements View.OnClickListener 
 
                 // userLocalStore.storeUserData(registeredData);
 
-                Toast.makeText(Register.this, "Success!", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(Register.this, "Success!", Toast.LENGTH_SHORT).show();
 
                 // sends data to server
                 registerUser(registeredData);
