@@ -10,4 +10,5 @@
     <string name="title_activity_log__in">Log_In</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_game1">RNG BOYS</string>
+    <string name="title_activity_stats">Statistics</string>
 </resources>

@@ -3,8 +3,10 @@ package runeviperz.com.myapplication;
 import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,7 +18,7 @@ import org.w3c.dom.Text;
 import java.util.Random;
 
 
-public class Game1 extends ActionBarActivity implements View.OnClickListener {
+public class Game1 extends AppCompatActivity implements View.OnClickListener {
     TextView tvHighscore, tvCurrentRoll, tvTotalRolls, tvLeastRolls, tvMostRolls;
     Button bRoll, bRestart, bGame1Back, bResetAll;
     UserLocalStore userLocalStore;
@@ -64,7 +66,7 @@ public class Game1 extends ActionBarActivity implements View.OnClickListener {
                 tvTotalRolls.setText(""+rolls);
                 userLocalStore.setTotalRolls(rolls);
                 Random random = new Random();
-                int randnum = random.nextInt(101);
+                int randnum = random.nextInt(100)+1;
                 tvCurrentRoll.setText(""+randnum);
                 if (randnum > userLocalStore.getHighScore()) {
                     userLocalStore.setHighScore(randnum);
@@ -97,6 +99,7 @@ public class Game1 extends ActionBarActivity implements View.OnClickListener {
                 break;
         }
     }
+
     private void restart() {
         tvCurrentRoll.setText("0");
         tvTotalRolls.setText("0");
@@ -128,4 +131,5 @@ public class Game1 extends ActionBarActivity implements View.OnClickListener {
         });
         alertDialog.show();
     }
+
 }

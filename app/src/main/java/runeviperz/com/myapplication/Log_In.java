@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class Log_In extends ActionBarActivity implements View.OnClickListener {
+public class Log_In extends AppCompatActivity implements View.OnClickListener {
 
     Button bLogin, bRegister, bReset;
     EditText etUsername, etPassword;
