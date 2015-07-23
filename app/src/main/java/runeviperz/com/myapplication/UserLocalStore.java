@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 /**
  * Created by Admin on 16/07/2015.
  */
+
 public class UserLocalStore {
 
     public static final String SP_NAME = "userDetails";
@@ -35,11 +36,11 @@ public class UserLocalStore {
 //        return storedUser;
 //    }
 
-    public User getRegisteredUser() {
-        String username = userLocalDatabase.getString("username", "");
-        String password = userLocalDatabase.getString("password", "");
-        return new User(username, password);
-    }
+//    public User getRegisteredUser() {
+//        String username = userLocalDatabase.getString("username", "");
+//        String password = userLocalDatabase.getString("password", "");
+//        return new User(username, password);
+//    }
 
     public String getUsername() {
         return userLocalDatabase.getString("username", "");
@@ -107,6 +108,15 @@ public class UserLocalStore {
 
     public int getMostRolls() {
         return userLocalDatabase.getInt("mostRolls", 0);
+    }
+
+    public void resetAllScores() {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putInt("highscore", 0);
+        spEditor.putInt("totalRolls", 0);
+        spEditor.putInt("leastRolls", 0);
+        spEditor.putInt("mostRolls", 0);
+        spEditor.commit();
     }
 
 }

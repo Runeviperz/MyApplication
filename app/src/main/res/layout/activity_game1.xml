@@ -11,7 +11,7 @@
         android:text="R N G B O Y S"
         android:textSize="48dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:id="@+id/tvTitle" />
 
     <Space
@@ -160,13 +160,29 @@
 
     </LinearLayout>
 
-    <Button
-        android:layout_alignParentBottom="true"
+    <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Back"
-        android:id="@+id/bGame1Back"
-        />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:text="Reset all"
+            android:id="@+id/bResetAll"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:text="Back"
+            android:id="@+id/bGame1Back"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>
