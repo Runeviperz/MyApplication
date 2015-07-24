@@ -131,7 +131,10 @@ public class UserLocalStore {
         spEditor.putInt("highscore", 0);
         spEditor.putInt("totalRolls", 0);
         spEditor.putInt("leastRolls", 0);
+        spEditor.putInt("tempTotalRolls", 0);
         spEditor.putInt("mostRolls", 0);
+        spEditor.putInt("totalGames", 0);
+        spEditor.putInt("totalGameRolls", 0);
         spEditor.commit();
     }
 

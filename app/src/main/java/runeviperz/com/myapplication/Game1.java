@@ -47,7 +47,7 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
         bRoll.setOnClickListener(this);
         bRestart.setOnClickListener(this);
         bGame1Back.setOnClickListener(this);
-        bResetAll.setOnClickListener(this);
+//        bResetAll.setOnClickListener(this);
 
         tvHighscore.setText("" + userLocalStore.getHighScore());
         tvTotalRolls.setText("" + rolls);
@@ -90,9 +90,6 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
             case R.id.bGame1Back:
                 finish();
                 break;
-//            case R.id.bResetAll:
-//                showAlert();
-//                break;
         }
     }
 
@@ -117,27 +114,5 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
         tvHighscore.setText(""+userLocalStore.getHighScore());
         bRoll.setEnabled(true);
     }
-
-//    private void showAlert() {
-//        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-//        alertDialog.setTitle("Are you sure you want to reset");
-//        alertDialog.setMessage("You will reset all scores, including lowest rolls and highest rolls.");
-//        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) {
-//                // continue with delete
-//                userLocalStore.resetAllScores();
-//                tvLeastRolls.setText(""+userLocalStore.getLeastRolls());
-//                tvMostRolls.setText(""+userLocalStore.getMostRolls());
-//                restart();
-//            }
-//        });
-//        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) {
-//                // do nothing
-//
-//            }
-//        });
-//        alertDialog.show();
-//    }
 
 }

@@ -21,7 +21,7 @@
         android:layout_marginBottom="10dp"
         android:scrollbars="none"
         android:layout_below="@+id/tvTitleStatistics"
-        android:layout_above="@+id/bStatsBack">
+        android:layout_above="@+id/bResetAll">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -119,6 +119,13 @@
         </RelativeLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/bResetAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bStatsBack"
+        android:text="Reset All" />
 
     <Button
         android:id="@+id/bStatsBack"
