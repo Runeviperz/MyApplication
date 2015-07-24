@@ -11,4 +11,7 @@
     <string name="title_activity_register">Register</string>
     <string name="title_activity_game1">RNG BOYS</string>
     <string name="title_activity_stats">Statistics</string>
+
+    <string name="facebook_app_id">909470479111986</string>
+    <string name="title_activity_facebook">FacebookActivity</string>
 </resources>
