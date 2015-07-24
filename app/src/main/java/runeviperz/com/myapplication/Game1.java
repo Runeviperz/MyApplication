@@ -19,7 +19,8 @@ import java.util.Random;
 
 
 public class Game1 extends AppCompatActivity implements View.OnClickListener {
-    TextView tvHighscore, tvCurrentRoll, tvTotalRolls, tvLeastRolls, tvMostRolls;
+    TextView tvHighscore, tvCurrentRoll, tvTotalRolls;
+    TextView tvMostRolls, tvLeastRolls;
     Button bRoll, bRestart, bGame1Back, bResetAll;
     UserLocalStore userLocalStore;
     int rolls;
@@ -41,7 +42,7 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
 
         userLocalStore = new UserLocalStore(this);
 
-        rolls = userLocalStore.getTotalRolls();
+        rolls = userLocalStore.getTempTotalRolls();
 
         bRoll.setOnClickListener(this);
         bRestart.setOnClickListener(this);
@@ -64,7 +65,7 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
             case R.id.bRoll:
                 rolls++;
                 tvTotalRolls.setText(""+rolls);
-                userLocalStore.setTotalRolls(rolls);
+                userLocalStore.setTempTotalRolls(rolls);
                 Random random = new Random();
                 int randnum = random.nextInt(100)+1;
                 tvCurrentRoll.setText(""+randnum);
@@ -73,14 +74,10 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
                     tvHighscore.setText(""+userLocalStore.getHighScore());
                     if (randnum == 100) {
                         bRoll.setEnabled(false);
-                        if (rolls > userLocalStore.getMostRolls()) {
-                            userLocalStore.setMostRolls(rolls);
-                        }
-                        if (userLocalStore.getLeastRolls() == 0) {
-                            userLocalStore.setLeastRolls(rolls);
-                        } else if (rolls < userLocalStore.getLeastRolls()) {
-                            userLocalStore.setLeastRolls(rolls);
-                        }
+                        setMostRolls();
+                        setLeastRolls();
+                        userLocalStore.updateGameRolls(rolls);
+                        userLocalStore.updateTotalGames();
                         tvLeastRolls.setText(""+userLocalStore.getLeastRolls());
                         tvMostRolls.setText(""+userLocalStore.getMostRolls());
                         Toast.makeText(Game1.this, "You've won!", Toast.LENGTH_LONG).show();
@@ -94,18 +91,32 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.bResetAll:
-                // Insert alertdialog to confirm
                 showAlert();
                 break;
         }
     }
 
+    private void updateGames() {
+        userLocalStore.updateTotalGames();
+    }
+    private void setMostRolls() {
+        if (rolls > userLocalStore.getMostRolls()) {
+            userLocalStore.setMostRolls(rolls);
+        }
+    }
+    private void setLeastRolls() {
+        if (userLocalStore.getLeastRolls() == 0) {
+            userLocalStore.setLeastRolls(rolls);
+        } else if (rolls < userLocalStore.getLeastRolls()) {
+            userLocalStore.setLeastRolls(rolls);
+        }
+    }
     private void restart() {
         tvCurrentRoll.setText("0");
         tvTotalRolls.setText("0");
         userLocalStore.setHighScore(0);
-        userLocalStore.setTotalRolls(0);
-        rolls = 0;
+        userLocalStore.setTempTotalRolls(0);
+        rolls = userLocalStore.getTempTotalRolls();
         tvHighscore.setText(""+userLocalStore.getHighScore());
         bRoll.setEnabled(true);
     }

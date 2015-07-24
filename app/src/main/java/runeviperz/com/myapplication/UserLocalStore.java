@@ -3,10 +3,6 @@ package runeviperz.com.myapplication;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by Admin on 16/07/2015.
- */
-
 public class UserLocalStore {
 
     public static final String SP_NAME = "userDetails";
@@ -80,14 +76,14 @@ public class UserLocalStore {
         return userLocalDatabase.getInt("highscore", 0);
     }
 
-    public void setTotalRolls(int rolls) {
+    public void setTempTotalRolls(int rolls) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
-        spEditor.putInt("totalRolls", rolls);
+        spEditor.putInt("tempTotalRolls", rolls);
         spEditor.commit();
     }
 
-    public int getTotalRolls() {
-        return userLocalDatabase.getInt("totalRolls", 0);
+    public int getTempTotalRolls() {
+        return userLocalDatabase.getInt("tempTotalRolls", 0);
     }
 
     public int getLeastRolls() {
@@ -108,6 +104,26 @@ public class UserLocalStore {
 
     public int getMostRolls() {
         return userLocalDatabase.getInt("mostRolls", 0);
+    }
+
+    public void updateTotalGames() {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putInt("totalGames", getTotalGames()+1);
+        spEditor.commit();
+    }
+
+    public int getTotalGames() {
+        return userLocalDatabase.getInt("totalGames", 0);
+    }
+
+    public void updateGameRolls(int rolls) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putInt("totalGameRolls", getTotalGameRolls()+rolls);
+        spEditor.commit();
+    }
+
+    public int getTotalGameRolls() {
+        return userLocalDatabase.getInt("totalGameRolls", 0);
     }
 
     public void resetAllScores() {

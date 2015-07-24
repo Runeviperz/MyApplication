@@ -12,7 +12,7 @@ import android.widget.Button;
 
 public class Logged_In extends AppCompatActivity implements View.OnClickListener {
 
-    Button bLogout, bGame1;
+    Button bLogout, bGame1, bStatistics;
     UserLocalStore userLocalStore;
 
     @Override
@@ -22,9 +22,11 @@ public class Logged_In extends AppCompatActivity implements View.OnClickListener
 
         bLogout = (Button) findViewById(R.id.bLogout);
         bGame1 = (Button) findViewById(R.id.bGame1);
+        bStatistics = (Button) findViewById(R.id.bStatistics);
 
         userLocalStore = new UserLocalStore(this);
 
+        bStatistics.setOnClickListener(this);
         bLogout.setOnClickListener(this);
         bGame1.setOnClickListener(this);
     }
@@ -45,6 +47,9 @@ public class Logged_In extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.bGame1:
                 startActivity(new Intent(this, Game1.class));
+                break;
+            case R.id.bStatistics:
+                startActivity(new Intent(this, Stats.class));
                 break;
         }
     }

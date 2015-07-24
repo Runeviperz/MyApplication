@@ -1,8 +1,130 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="10dp"
     android:orientation="vertical" >
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvTitleStatistics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Statistics"
+        android:layout_marginBottom="10dp"
+        android:textSize="48sp"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="10dp"
+        android:scrollbars="none"
+        android:layout_below="@+id/tvTitleStatistics"
+        android:layout_above="@+id/bStatsBack">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTitleTotalGames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="44dp"
+                android:text="Total Games: "
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvTotalGames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="24sp"
+                android:layout_alignTop="@+id/tvTitleTotalGames"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/tvTitleLeastRolls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Least Rolls: "
+                android:textSize="24sp"
+                android:layout_below="@+id/tvTitleTotalGames"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/tvLeastRolls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="24sp"
+                android:layout_alignTop="@+id/tvTitleLeastRolls"
+                android:layout_alignParentRight="true" />
+
+            <TextView
+                android:id="@+id/tvTitleMostRolls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Most Rolls: "
+                android:textSize="24sp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/tvTitleLeastRolls" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="24sp"
+                android:id="@+id/tvMostRolls"
+                android:layout_alignTop="@+id/tvTitleMostRolls"
+                android:layout_alignParentRight="true" />
+
+            <TextView
+                android:id="@+id/tvTitleAverageRolls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Average Rolls: "
+                android:layout_marginBottom="44dp"
+                android:textSize="24sp"
+                android:layout_below="@+id/tvTitleMostRolls" />
+
+            <TextView
+                android:id="@+id/tvAverageRolls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="24sp"
+                android:layout_alignTop="@+id/tvTitleAverageRolls"
+                android:layout_alignParentRight="true" />
+
+            <TextView
+                android:id="@+id/tvTitleAchievementsUnlocked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Achievements Unlocked: "
+                android:layout_marginBottom="200dp"
+                android:textSize="24sp"
+                android:layout_below="@+id/tvTitleAverageRolls" />
+
+            <TextView
+                android:id="@+id/tvAchievementsUnlocked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="24sp"
+                android:layout_alignTop="@+id/tvTitleAchievementsUnlocked"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/bStatsBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Back" />
+
+</RelativeLayout>
