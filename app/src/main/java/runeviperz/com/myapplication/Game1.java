@@ -38,7 +38,7 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
         bRoll = (Button) findViewById(R.id.bRoll);
         bRestart = (Button) findViewById(R.id.bRestart);
         bGame1Back = (Button) findViewById(R.id.bGame1Back);
-        bResetAll = (Button) findViewById(R.id.bResetAll);
+//        bResetAll = (Button) findViewById(R.id.bResetAll);
 
         userLocalStore = new UserLocalStore(this);
 
@@ -90,15 +90,12 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
             case R.id.bGame1Back:
                 finish();
                 break;
-            case R.id.bResetAll:
-                showAlert();
-                break;
+//            case R.id.bResetAll:
+//                showAlert();
+//                break;
         }
     }
 
-    private void updateGames() {
-        userLocalStore.updateTotalGames();
-    }
     private void setMostRolls() {
         if (rolls > userLocalStore.getMostRolls()) {
             userLocalStore.setMostRolls(rolls);
@@ -121,26 +118,26 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
         bRoll.setEnabled(true);
     }
 
-    private void showAlert() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setTitle("Are you sure you want to reset");
-        alertDialog.setMessage("You will reset all scores, including lowest rolls and highest rolls.");
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // continue with delete
-                userLocalStore.resetAllScores();
-                tvLeastRolls.setText(""+userLocalStore.getLeastRolls());
-                tvMostRolls.setText(""+userLocalStore.getMostRolls());
-                restart();
-            }
-        });
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // do nothing
-
-            }
-        });
-        alertDialog.show();
-    }
+//    private void showAlert() {
+//        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+//        alertDialog.setTitle("Are you sure you want to reset");
+//        alertDialog.setMessage("You will reset all scores, including lowest rolls and highest rolls.");
+//        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//                // continue with delete
+//                userLocalStore.resetAllScores();
+//                tvLeastRolls.setText(""+userLocalStore.getLeastRolls());
+//                tvMostRolls.setText(""+userLocalStore.getMostRolls());
+//                restart();
+//            }
+//        });
+//        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//                // do nothing
+//
+//            }
+//        });
+//        alertDialog.show();
+//    }
 
 }
