@@ -92,7 +92,7 @@ public class Game1 extends AppCompatActivity implements View.OnTouchListener {
         }
         return true;
     }
-
+//
 //    @Override
 //    public void onClick(View view) {
 //        switch(view.getId()) {
