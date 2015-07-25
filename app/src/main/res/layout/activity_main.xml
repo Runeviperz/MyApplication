@@ -19,8 +19,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:text="Disclaimer: RNG BOYS is an unfinished app that is slowly improving as I learn to code for android. It is a game where you repeatedly press a button that rolls a number between 1-100, and once you roll 100 you win the game. Pretty simple stuff.  \n\nAs a note, passwords are stored in PLAIN TEXT (for now) so when creating an account please create a NEW password that is not used for anything else. \n \nAny improvements or suggestions are welcome!"
+        android:text="Disclaimer: RNG BOYS is an unfinished app that is slowly improving as I learn to code for android. It is a game where you repeatedly press a button that rolls a number between 1-100, and once you roll 100 you win the game. Pretty simple stuff.  \n\nAs a note, passwords are stored in PLAIN TEXT (for now) so when creating an account please create a NEW password that is not used for anything else. \n \nAny improvements or suggestions are welcome!\n\nDownload the latest app update at:"
         android:layout_below="@+id/tvTitle"
+        />
+
+    <TextView
+        android:id="@+id/tvLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="https://goo.gl/YCbtka"
+        android:layout_below="@+id/tvDisclaimer"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text=" (copy me)"
+        android:layout_toRightOf="@+id/tvLink"
+        android:layout_alignTop="@+id/tvLink"
         />
 
     <ImageView
@@ -31,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/smiley"
-        android:layout_below="@+id/tvDisclaimer"
+        android:layout_below="@+id/tvLink"
         android:layout_above="@+id/bBegin"/>
 
     <Button

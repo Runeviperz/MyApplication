@@ -1,6 +1,8 @@
 package runeviperz.com.myapplication;
 // Hi
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,16 +15,14 @@ import android.widget.EditText;
 import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.IOException;
-import java.net.Socket;
-
+import android.content.ClipboardManager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     String version = "1.26";
+    String link = "https://goo.gl/YCbtka";
     Button bBegin, bReset;
-    TextView tvTitle;
+    TextView tvTitle, tvLink;
     int count = 0;
     User user;
 
@@ -35,11 +35,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         bBegin = (Button) findViewById(R.id.bBegin);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
+        tvLink = (TextView) findViewById(R.id.tvLink);
         bReset = (Button) findViewById(R.id.bReset);
         user = new User("appversion", version);
 
         bBegin.setOnClickListener(this);
         tvTitle.setOnClickListener(this);
+        tvLink.setOnClickListener(this);
 
         userLocalStore = new UserLocalStore(this);
 
@@ -67,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(MainActivity.this, "ooh easter egg!", Toast.LENGTH_SHORT).show();
                 }
                 break;
+            case R.id.tvLink:
+                copyToClipBoard();
+                break;
         }
     }
 
@@ -80,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(MainActivity.this, "There is a newer version available. \nOr I can't connect to the database :/", Toast.LENGTH_SHORT).show();
                     logUserIn(returnedUser);
                 } else {
+                    Toast.makeText(MainActivity.this, "This is the latest version!", Toast.LENGTH_SHORT).show();
                     logUserIn(returnedUser);
                 }
             }
@@ -88,5 +94,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void logUserIn(User returnedUser) {
         startActivity(new Intent(this, Logged_In.class));
+    }
+
+    private void copyToClipBoard()
+    {
+        ClipboardManager clipMan = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Copied text", tvLink.getText());
+        Toast.makeText(MainActivity.this, "Text copied", Toast.LENGTH_SHORT).show();
+        clipMan.setPrimaryClip(clip);
     }
 }
