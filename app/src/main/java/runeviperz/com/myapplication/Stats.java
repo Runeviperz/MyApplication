@@ -30,7 +30,7 @@ public class Stats extends AppCompatActivity implements View.OnClickListener {
         tvLeastRolls = (TextView) findViewById(R.id.tvLeastRolls);
         tvMostRolls = (TextView) findViewById(R.id.tvMostRolls);
         tvAverageRolls = (TextView) findViewById(R.id.tvAverageRolls);
-        tvAchievementsUnlocked = (TextView) findViewById(R.id.tvAchievementsUnlocked);
+//        tvAchievementsUnlocked = (TextView) findViewById(R.id.tvAchievementsUnlocked);
         bStatsBack = (Button) findViewById(R.id.bStatsBack);
         bResetAll = (Button) findViewById(R.id.bResetAll);
 
@@ -40,7 +40,7 @@ public class Stats extends AppCompatActivity implements View.OnClickListener {
         tvLeastRolls.setText(""+userLocalStore.getLeastRolls());
         tvMostRolls.setText(""+userLocalStore.getMostRolls());
         tvAverageRolls.setText(calculateAverageRolls());
-        tvAchievementsUnlocked.setText("");
+//        tvAchievementsUnlocked.setText("");
 
         bResetAll.setOnClickListener(this);
         bStatsBack.setOnClickListener(this);
@@ -78,7 +78,7 @@ public class Stats extends AppCompatActivity implements View.OnClickListener {
         tvLeastRolls.setText(""+userLocalStore.getLeastRolls());
         tvMostRolls.setText(""+userLocalStore.getMostRolls());
         tvAverageRolls.setText(calculateAverageRolls());
-        tvAchievementsUnlocked.setText("");
+//        tvAchievementsUnlocked.setText("");
     }
 
         private void showAlert() {

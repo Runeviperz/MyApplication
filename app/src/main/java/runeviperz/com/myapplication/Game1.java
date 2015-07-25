@@ -112,7 +112,7 @@ public class Game1 extends AppCompatActivity implements View.OnTouchListener {
         @Override public void run() {
             roll();
             if (!(randnum == 100)) {
-                mHandler.postDelayed(this, 100);
+                mHandler.postDelayed(this, 50);
             }
         }
     };
@@ -129,6 +129,15 @@ public class Game1 extends AppCompatActivity implements View.OnTouchListener {
             tvHighscore.setText(""+userLocalStore.getHighScore());
             if (randnum == 100) {
                 bRoll.setEnabled(false);
+                if (rolls == 1) {
+                    userLocalStore.setWonInExactly1();
+                } else if (rolls == 69) {
+                    userLocalStore.setWonInExactly69();
+                } else if (rolls == 100) {
+                    userLocalStore.setWonInExactly100();
+                } else if (rolls == 420) {
+                    userLocalStore.setWonInExactly420();
+                }
                 setMostRolls();
                 setLeastRolls();
                 userLocalStore.updateGameRolls(rolls);

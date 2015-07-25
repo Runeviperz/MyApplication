@@ -194,6 +194,12 @@ public class UserLocalStore {
         spEditor.commit();
     }
 
+    public void setWonInExactly1() {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putBoolean("wonInExactly1", true);
+        spEditor.commit();
+    }
+
     public void setWonInExactly69() {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putBoolean("wonInExactly69", true);
@@ -271,6 +277,10 @@ public class UserLocalStore {
 
     public boolean getWon250Games() {
         return userLocalDatabase.getBoolean("won250Games", false);
+    }
+
+    public boolean getWonInExactly1() {
+        return userLocalDatabase.getBoolean("wonInExactly1", false);
     }
 
     public boolean getWonInExactly69() {

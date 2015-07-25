@@ -98,23 +98,23 @@
                 android:layout_alignTop="@+id/tvTitleAverageRolls"
                 android:layout_alignParentRight="true" />
 
-            <TextView
-                android:id="@+id/tvTitleAchievementsUnlocked"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Achievements Unlocked: "
-                android:layout_marginBottom="44dp"
-                android:textSize="24sp"
-                android:layout_below="@+id/tvTitleAverageRolls" />
+            <!--<TextView-->
+                <!--android:id="@+id/tvTitleAchievementsUnlocked"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Achievements Unlocked: "-->
+                <!--android:layout_marginBottom="44dp"-->
+                <!--android:textSize="24sp"-->
+                <!--android:layout_below="@+id/tvTitleAverageRolls" />-->
 
-            <TextView
-                android:id="@+id/tvAchievementsUnlocked"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="24sp"
-                android:layout_alignTop="@+id/tvTitleAchievementsUnlocked"
-                android:layout_alignParentRight="true" />
+            <!--<TextView-->
+                <!--android:id="@+id/tvAchievementsUnlocked"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="0"-->
+                <!--android:textSize="24sp"-->
+                <!--android:layout_alignTop="@+id/tvTitleAchievementsUnlocked"-->
+                <!--android:layout_alignParentRight="true" />-->
 
         </RelativeLayout>
 
