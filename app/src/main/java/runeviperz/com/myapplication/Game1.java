@@ -67,6 +67,9 @@ public class Game1 extends AppCompatActivity implements View.OnTouchListener {
             case R.id.bRoll:
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     roll();
+                    if (randnum == 100) {
+                        break;
+                    }
                     mHandler = new Handler();
                     mHandler.postDelayed(mAction, 500);
                     break;

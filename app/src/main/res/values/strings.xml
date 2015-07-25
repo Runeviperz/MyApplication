@@ -14,4 +14,5 @@
 
     <string name="facebook_app_id">909470479111986</string>
     <string name="title_activity_facebook">FacebookActivity</string>
+    <string name="title_activity_achievements">Achievements</string>
 </resources>
