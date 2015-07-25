@@ -42,6 +42,7 @@
             android:name=".Achievements"
             android:label="@string/title_activity_achievements" >
         </activity>
+
     </application>
 
 </manifest>

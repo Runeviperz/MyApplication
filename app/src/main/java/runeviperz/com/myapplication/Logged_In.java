@@ -8,11 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class Logged_In extends AppCompatActivity implements View.OnClickListener {
 
-    Button bLogout, bGame1, bStatistics, bAchievements;
+    Button bGame1, bStatistics, bAchievements;
+
     UserLocalStore userLocalStore;
 
     @Override
@@ -20,7 +22,6 @@ public class Logged_In extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged__in);
 
-        bLogout = (Button) findViewById(R.id.bLogout);
         bAchievements = (Button) findViewById(R.id.bAchievements);
         bGame1 = (Button) findViewById(R.id.bGame1);
         bStatistics = (Button) findViewById(R.id.bStatistics);
@@ -29,7 +30,6 @@ public class Logged_In extends AppCompatActivity implements View.OnClickListener
 
         bAchievements.setOnClickListener(this);
         bStatistics.setOnClickListener(this);
-        bLogout.setOnClickListener(this);
         bGame1.setOnClickListener(this);
     }
 
@@ -42,11 +42,6 @@ public class Logged_In extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.bLogout:
-                finish();
-                userLocalStore.logOut();
-                startActivity(new Intent(this, Log_In.class));
-                break;
             case R.id.bGame1:
                 startActivity(new Intent(this, Game1.class));
                 break;

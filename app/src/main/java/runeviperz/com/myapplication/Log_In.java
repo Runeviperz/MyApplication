@@ -42,6 +42,7 @@ public class Log_In extends AppCompatActivity implements View.OnClickListener {
         tvLogin.setOnClickListener(this);
 
         userLocalStore = new UserLocalStore(this);
+        userLocalStore.logOut();
     }
 
     @Override

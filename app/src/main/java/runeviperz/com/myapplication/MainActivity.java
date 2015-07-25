@@ -1,5 +1,6 @@
 package runeviperz.com.myapplication;
 // Hi
+import android.app.AlertDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,9 +20,11 @@ import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    String version = "1.26";
     Button bBegin, bReset;
     TextView tvTitle;
     int count = 0;
+    User user;
 
     UserLocalStore userLocalStore;
 
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bBegin = (Button) findViewById(R.id.bBegin);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         bReset = (Button) findViewById(R.id.bReset);
+        user = new User("appversion", version);
 
         bBegin.setOnClickListener(this);
         tvTitle.setOnClickListener(this);
@@ -54,12 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.bBegin:
-                if (!userLocalStore.getUsername().isEmpty()) {
-                Toast.makeText(MainActivity.this, "Welcome back " + userLocalStore.getName(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, Logged_In.class));
-                } else {
-                    startActivity(new Intent(this, Log_In.class));
-                }
+                authenticate(user);
                 break;
             case R.id.tvTitle:
                 count++;
@@ -69,5 +68,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
         }
+    }
+
+    // Authenticate user
+    private void authenticate(User user) {
+        ServerRequests serverRequest = new ServerRequests(this);
+        serverRequest.fetchUserDataAsyncTask(user, new GetUserCallback() {
+            @Override
+            public void done(User returnedUser) {
+                if (returnedUser == null) {
+                    Toast.makeText(MainActivity.this, "There is a newer version available. \nOr I can't connect to the database :/", Toast.LENGTH_SHORT).show();
+                    logUserIn(returnedUser);
+                } else {
+                    logUserIn(returnedUser);
+                }
+            }
+        });
+    }
+
+    private void logUserIn(User returnedUser) {
+        startActivity(new Intent(this, Logged_In.class));
     }
 }

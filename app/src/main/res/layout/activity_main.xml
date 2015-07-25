@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:text="Disclaimer: RNG BOYS is an unfinished app that is slowly improving as I learn to code for android. Certain features taken from Tonikami's youtube channel mainly the http/php stuff. \n\nAs a note, passwords are stored in PLAIN TEXT (for now) so when creating an account please create a NEW password that is not used for anything else. \n \n Any improvements or suggestions are welcome!"
+        android:text="Disclaimer: RNG BOYS is an unfinished app that is slowly improving as I learn to code for android. It is a game where you repeatedly press a button that rolls a number between 1-100, and once you roll 100 you win the game. Pretty simple stuff.  \n\nAs a note, passwords are stored in PLAIN TEXT (for now) so when creating an account please create a NEW password that is not used for anything else. \n \nAny improvements or suggestions are welcome!"
         android:layout_below="@+id/tvTitle"
         />
 
