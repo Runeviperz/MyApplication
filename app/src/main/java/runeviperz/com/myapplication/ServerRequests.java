@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class ServerRequests {
     ProgressDialog progressDialog;
     public static final int CONNECTION_TIMEOUT = 1000 * 15;
-    public static final String SERVER_ADDRESS = "http://runeviperz.net46.net/";
+    public static final String SERVER_ADDRESS = "http://rhzd.tk/";
 
     public ServerRequests(Context context) {
         progressDialog = new ProgressDialog(context);
