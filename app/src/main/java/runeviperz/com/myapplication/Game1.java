@@ -1,6 +1,7 @@
 package runeviperz.com.myapplication;
 
 import android.content.DialogInterface;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,11 +19,13 @@ import org.w3c.dom.Text;
 import java.util.Random;
 
 
-public class Game1 extends AppCompatActivity implements View.OnClickListener {
+public class Game1 extends AppCompatActivity implements View.OnTouchListener {
+    int randnum;
     TextView tvHighscore, tvCurrentRoll, tvTotalRolls;
     TextView tvMostRolls, tvLeastRolls;
     Button bRoll, bRestart, bGame1Back, bResetAll;
     UserLocalStore userLocalStore;
+    Handler mHandler;
     int rolls;
 
     @Override
@@ -44,9 +47,9 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
 
         rolls = userLocalStore.getTempTotalRolls();
 
-        bRoll.setOnClickListener(this);
-        bRestart.setOnClickListener(this);
-        bGame1Back.setOnClickListener(this);
+        bRoll.setOnTouchListener(this);
+        bRestart.setOnTouchListener(this);
+        bGame1Back.setOnTouchListener(this);
 //        bResetAll.setOnClickListener(this);
 
         tvHighscore.setText("" + userLocalStore.getHighScore());
@@ -58,38 +61,79 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
             bRoll.setEnabled(false);
         }
     }
-
     @Override
-    public void onClick(View view) {
-        switch(view.getId()) {
+    public boolean onTouch(View v, MotionEvent event) {
+        switch(v.getId()){
             case R.id.bRoll:
-                rolls++;
-                tvTotalRolls.setText(""+rolls);
-                userLocalStore.setTempTotalRolls(rolls);
-                Random random = new Random();
-                int randnum = random.nextInt(100)+1;
-                tvCurrentRoll.setText(""+randnum);
-                if (randnum > userLocalStore.getHighScore()) {
-                    userLocalStore.setHighScore(randnum);
-                    tvHighscore.setText(""+userLocalStore.getHighScore());
-                    if (randnum == 100) {
-                        bRoll.setEnabled(false);
-                        setMostRolls();
-                        setLeastRolls();
-                        userLocalStore.updateGameRolls(rolls);
-                        userLocalStore.updateTotalGames();
-                        tvLeastRolls.setText(""+userLocalStore.getLeastRolls());
-                        tvMostRolls.setText(""+userLocalStore.getMostRolls());
-                        Toast.makeText(Game1.this, "You've won!", Toast.LENGTH_LONG).show();
-                    }
+                if (MotionEvent.ACTION_DOWN == event.getAction()) {
+                    roll();
+                    mHandler = new Handler();
+                    mHandler.postDelayed(mAction, 500);
+                    break;
+                } else if (MotionEvent.ACTION_UP == event.getAction()) {
+                    mHandler.removeCallbacks(mAction);
+                    mHandler = null;
+                    break;
                 }
                 break;
             case R.id.bRestart:
-                restart();
+                if (MotionEvent.ACTION_DOWN == event.getAction()) {
+                    restart();
+                }
                 break;
             case R.id.bGame1Back:
-                finish();
+                if (MotionEvent.ACTION_DOWN == event.getAction()) {
+                    finish();
+                }
                 break;
+        }
+        return true;
+    }
+
+//    @Override
+//    public void onClick(View view) {
+//        switch(view.getId()) {
+//            case R.id.bRoll:
+//                roll();
+//                break;
+//            case R.id.bRestart:
+//                restart();
+//                break;
+//            case R.id.bGame1Back:
+//                finish();
+//                break;
+//        }
+//    }
+
+    Runnable mAction = new Runnable() {
+        @Override public void run() {
+            roll();
+            if (!(randnum == 100)) {
+                mHandler.postDelayed(this, 100);
+            }
+        }
+    };
+
+    private void roll() {
+        rolls++;
+        tvTotalRolls.setText(""+rolls);
+        userLocalStore.setTempTotalRolls(rolls);
+        Random random = new Random();
+        randnum = random.nextInt(100)+1;
+        tvCurrentRoll.setText(""+randnum);
+        if (randnum > userLocalStore.getHighScore()) {
+            userLocalStore.setHighScore(randnum);
+            tvHighscore.setText(""+userLocalStore.getHighScore());
+            if (randnum == 100) {
+                bRoll.setEnabled(false);
+                setMostRolls();
+                setLeastRolls();
+                userLocalStore.updateGameRolls(rolls);
+                userLocalStore.updateTotalGames();
+                tvLeastRolls.setText(""+userLocalStore.getLeastRolls());
+                tvMostRolls.setText(""+userLocalStore.getMostRolls());
+                Toast.makeText(Game1.this, "You've won!", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
