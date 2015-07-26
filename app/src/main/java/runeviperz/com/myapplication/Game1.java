@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
@@ -19,13 +20,15 @@ import org.w3c.dom.Text;
 import java.util.Random;
 
 
-public class Game1 extends AppCompatActivity implements View.OnTouchListener {
+public class Game1 extends AppCompatActivity implements View.OnClickListener {
     int randnum;
     TextView tvHighscore, tvCurrentRoll, tvTotalRolls;
     TextView tvMostRolls, tvLeastRolls;
+    EditText etBetAmount, etBetRolls;
     Button bRoll, bRestart, bGame1Back, bLockIn;
     UserLocalStore userLocalStore;
     Handler mHandler;
+    boolean isRolling;
     int rolls;
 
     @Override
@@ -38,61 +41,100 @@ public class Game1 extends AppCompatActivity implements View.OnTouchListener {
         bRoll = (Button) findViewById(R.id.bRoll);
         bRestart = (Button) findViewById(R.id.bRestart);
         bGame1Back = (Button) findViewById(R.id.bGame1Back);
+        etBetAmount = (EditText) findViewById(R.id.etBetAmount);
+        etBetRolls = (EditText) findViewById(R.id.etBetRolls);
 
         userLocalStore = new UserLocalStore(this);
 
         rolls = userLocalStore.getTempTotalRolls();
 
-        bRoll.setOnTouchListener(this);
-        bRestart.setOnTouchListener(this);
-        bGame1Back.setOnTouchListener(this);
+        bRoll.setOnClickListener(this);
+        bRestart.setOnClickListener(this);
+        bGame1Back.setOnClickListener(this);
+        etBetAmount.setOnClickListener(this);
+        etBetRolls.setOnClickListener(this);
 
         tvTotalRolls.setText("" + rolls);
+
+        isRolling = false;
 
         if (userLocalStore.getHighScore() == 100) {
             bRoll.setEnabled(false);
         }
     }
+
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        switch(v.getId()){
+    public void onClick(View view) {
+        switch(view.getId()) {
             case R.id.bRoll:
-                if (MotionEvent.ACTION_DOWN == event.getAction()) {
-                    roll();
-                    if (randnum == 100) {
-                        break;
-                    }
-                    mHandler = new Handler();
-                    mHandler.postDelayed(mAction, 500);
-                    break;
-                } else if (MotionEvent.ACTION_UP == event.getAction()) {
-                    mHandler.removeCallbacks(mAction);
-                    mHandler = null;
-                    break;
-                }
+                isRolling = true;
+                etBetAmount.setEnabled(false);
+                etBetRolls.setEnabled(false);
+                bRoll.setEnabled(false);
+                bRestart.setEnabled(false);
+                bGame1Back.setEnabled(false);
+                mHandler = new Handler();
+                mHandler.postDelayed(mAction, 0);
                 break;
             case R.id.bRestart:
-                if (MotionEvent.ACTION_DOWN == event.getAction()) {
-                    restart();
-                }
+                etBetAmount.setEnabled(true);
+                etBetRolls.setEnabled(true);
+                restart();
                 break;
             case R.id.bGame1Back:
-                if (MotionEvent.ACTION_DOWN == event.getAction()) {
-                    finish();
-                }
+                finish();
                 break;
         }
-        return true;
     }
+//    @Override
+//    public boolean onTouch(View v, MotionEvent event) {
+//        switch(v.getId()){
+//            case R.id.bRoll:
+//                if (MotionEvent.ACTION_DOWN == event.getAction()) {
+//                    roll();
+//                    if (randnum == 100) {
+//                        break;
+//                    }
+//                    mHandler = new Handler();
+//                    mHandler.postDelayed(mAction, 500);
+//                    break;
+//                } else if (MotionEvent.ACTION_UP == event.getAction()) {
+//                    mHandler.removeCallbacks(mAction);
+//                    mHandler = null;
+//                    break;
+//                }
+//                break;
+//            case R.id.bRestart:
+//                if (MotionEvent.ACTION_DOWN == event.getAction()) {
+//                    restart();
+//                }
+//                break;
+//            case R.id.bGame1Back:
+//                if (MotionEvent.ACTION_DOWN == event.getAction()) {
+//                    finish();
+//                }
+//                break;
+//        }
+//        return true;
+//    }
 
     Runnable mAction = new Runnable() {
         @Override public void run() {
             roll();
             if (!(randnum == 100)) {
                 mHandler.postDelayed(this, 50);
+            } else {
+                bRestart.setEnabled(true);
+                bGame1Back.setEnabled(true);
+                isRolling = false;
             }
         }
     };
+
+    @Override
+    public void onBackPressed() {
+
+    }
 
     private void roll() {
         rolls++;

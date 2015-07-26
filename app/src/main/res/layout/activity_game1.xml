@@ -109,12 +109,11 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="0"
                     android:hint="$$$$$$$$"
                     android:inputType="number"
                     android:textSize="24sp"
                     android:layout_gravity="center"
-                    android:id="@+id/tvBetAmount"
+                    android:id="@+id/etBetAmount"
                     android:layout_marginBottom="10dp" />
 
             </LinearLayout>
@@ -138,13 +137,12 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="0"
                     android:hint="Rolls to win"
                     android:gravity="center"
                     android:inputType="number"
                     android:textSize="24sp"
                     android:layout_gravity="center"
-                    android:id="@+id/tvBetRolls"
+                    android:id="@+id/etBetRolls"
                     android:layout_marginBottom="10dp" />
 
             </LinearLayout>
@@ -182,14 +180,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginBottom="10dp"
-            android:text="Lock In Bets"
-            android:id="@+id/bLockIn"
-            />
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:text="Lock In Bets"-->
+            <!--android:id="@+id/bLockIn"-->
+            <!--/>-->
 
         <Button
             android:layout_width="match_parent"
