@@ -19,7 +19,7 @@ import android.content.ClipboardManager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    String version = "1.26";
+    String version = "2.0";
     String link = "https://goo.gl/YCbtka";
     Button bBegin, bReset;
     TextView tvTitle, tvLink;
