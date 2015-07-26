@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:text="Disclaimer: RNG BOYS is an unfinished app that is slowly improving as I learn to code for android. It is a game where you repeatedly press a button that rolls a number between 1-100, and once you roll 100 you win the game. Pretty simple stuff.  \n\nAs a note, passwords are stored in PLAIN TEXT (for now) so when creating an account please create a NEW password that is not used for anything else. \n \nAny improvements or suggestions are welcome!\n\nDownload the latest app update at:"
+        android:text="Disclaimer: RNG BOYS is an unfinished app that is slowly improving as I learn to code for android. It is a game where you press a button that rolls a number between 1-100, and once you roll 100 you win the game. Pretty simple stuff.  \n\n**NEW** Now you can bet how many rolls it take to hit 100. If your roll bet is within 30 of how many rolls it eventually takes, you'll win between 1x-10x of your bet depending how close you were. Between 30-50 and you'll win 0x-1x your bet. Anything outside of 50 and you win nothing.\n \nAny improvements or suggestions are welcome!\n\nDownload the latest app update at:"
         android:layout_below="@+id/tvTitle"
         />
 
