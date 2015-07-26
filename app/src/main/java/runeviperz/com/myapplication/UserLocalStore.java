@@ -298,5 +298,58 @@ public class UserLocalStore {
         return userLocalDatabase.getBoolean("wonInOver9000", false);
     }
 
+    /**********************************************************************************************
+
+
+                                                BETTING
+
+
+     *********************************************************************************************/
+
+    public void checkFirstLaunch() {
+        if (userLocalDatabase.getBoolean("firstLaunch", true)) {
+            SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+            spEditor.putBoolean("firstLaunch", false);
+            spEditor.putInt("totalCash", 20000);
+            spEditor.commit();
+        }
+    }
+
+    public void setBetAmount(int amount) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putInt("betAmount", amount);
+        spEditor.commit();
+    }
+
+    public void setBetRolls(int rolls) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putInt("betRolls", rolls);
+        spEditor.commit();
+    }
+
+    public void setTotalCash(int amount) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putInt("totalCash", amount);
+        spEditor.commit();
+    }
+
+    /********************
+
+            Get
+
+     *******************/
+
+    public int getBetAmount() {
+        return userLocalDatabase.getInt("betAmount", 0);
+    }
+
+    public int getBetRolls() {
+        return userLocalDatabase.getInt("betRolls", 0);
+    }
+
+    public int getTotalCash() {
+        return userLocalDatabase.getInt("totalCash", 0);
+    }
+
 
 }

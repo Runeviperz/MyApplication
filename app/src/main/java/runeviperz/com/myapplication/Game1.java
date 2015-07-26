@@ -23,7 +23,7 @@ import java.util.Random;
 public class Game1 extends AppCompatActivity implements View.OnClickListener {
     int randnum;
     TextView tvHighscore, tvCurrentRoll, tvTotalRolls;
-    TextView tvMostRolls, tvLeastRolls;
+    TextView tvMostRolls, tvLeastRolls, tvRNGcoins;
     EditText etBetAmount, etBetRolls;
     Button bRoll, bRestart, bGame1Back, bLockIn;
     UserLocalStore userLocalStore;
@@ -43,6 +43,7 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
         bGame1Back = (Button) findViewById(R.id.bGame1Back);
         etBetAmount = (EditText) findViewById(R.id.etBetAmount);
         etBetRolls = (EditText) findViewById(R.id.etBetRolls);
+        tvRNGcoins = (TextView) findViewById(R.id.tvRNGcoins);
 
         userLocalStore = new UserLocalStore(this);
 
@@ -54,27 +55,34 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
         etBetAmount.setOnClickListener(this);
         etBetRolls.setOnClickListener(this);
 
+        userLocalStore.checkFirstLaunch();
+
         tvTotalRolls.setText("" + rolls);
+        updateCoinsText();
 
         isRolling = false;
 
         if (userLocalStore.getHighScore() == 100) {
             bRoll.setEnabled(false);
         }
+
+
     }
 
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.bRoll:
-                isRolling = true;
-                etBetAmount.setEnabled(false);
-                etBetRolls.setEnabled(false);
-                bRoll.setEnabled(false);
-                bRestart.setEnabled(false);
-                bGame1Back.setEnabled(false);
-                mHandler = new Handler();
-                mHandler.postDelayed(mAction, 0);
+                if (checkBetAmount()) {
+                    isRolling = true;
+                    etBetAmount.setEnabled(false);
+                    etBetRolls.setEnabled(false);
+                    bRoll.setEnabled(false);
+                    bRestart.setEnabled(false);
+                    bGame1Back.setEnabled(false);
+                    mHandler = new Handler();
+                    mHandler.postDelayed(mAction, 0);
+                }
                 break;
             case R.id.bRestart:
                 etBetAmount.setEnabled(true);
@@ -160,7 +168,10 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
                 setLeastRolls();
                 userLocalStore.updateGameRolls(rolls);
                 userLocalStore.updateTotalGames();
-                Toast.makeText(Game1.this, "You've won!", Toast.LENGTH_LONG).show();
+                int winnings = calculateBet(etBetAmount.getText().toString(), etBetRolls.getText().toString());
+                Toast.makeText(Game1.this, "You've won "+winnings+" coins!", Toast.LENGTH_LONG).show();
+                userLocalStore.setTotalCash(userLocalStore.getTotalCash() + winnings);
+                updateCoinsText();
             }
         }
     }
@@ -184,6 +195,43 @@ public class Game1 extends AppCompatActivity implements View.OnClickListener {
         userLocalStore.setTempTotalRolls(0);
         rolls = userLocalStore.getTempTotalRolls();
         bRoll.setEnabled(true);
+    }
+    public boolean checkBetAmount() {
+        try {
+            int betAmount = Integer.parseInt(etBetAmount.getText().toString());
+            if (userLocalStore.getTotalCash() - betAmount >= 0) {
+                userLocalStore.setTotalCash(userLocalStore.getTotalCash() - betAmount);
+                Toast.makeText(Game1.this, "Subtracted " + etBetAmount.getText().toString(), Toast.LENGTH_LONG).show();
+                updateCoinsText();
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return true;
+        }
+    }
+
+    public int calculateBet(String betAmountString, String betRollsString) {
+        try {
+            int betAmount = Integer.parseInt(betAmountString);
+            int betRolls = Integer.parseInt(betRollsString);
+            if (Math.abs(rolls-betRolls) >= 50) {
+                return 0;
+            } else {
+                int diff = Math.abs(rolls-betRolls);
+                double scale = 50 - diff;
+                double multiplier = 0.0045*scale*scale - 0.025*scale;
+                double total = multiplier*betAmount;
+                return (int)total;
+            }
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public void updateCoinsText() {
+        tvRNGcoins.setText(""+userLocalStore.getTotalCash());
     }
 
 }
