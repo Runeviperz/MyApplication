@@ -41,7 +41,6 @@ public class Game1 extends AppCompatActivity implements View.OnTouchListener {
         bRoll = (Button) findViewById(R.id.bRoll);
         bRestart = (Button) findViewById(R.id.bRestart);
         bGame1Back = (Button) findViewById(R.id.bGame1Back);
-//        bResetAll = (Button) findViewById(R.id.bResetAll);
 
         userLocalStore = new UserLocalStore(this);
 
@@ -50,7 +49,6 @@ public class Game1 extends AppCompatActivity implements View.OnTouchListener {
         bRoll.setOnTouchListener(this);
         bRestart.setOnTouchListener(this);
         bGame1Back.setOnTouchListener(this);
-//        bResetAll.setOnClickListener(this);
 
         tvHighscore.setText("" + userLocalStore.getHighScore());
         tvTotalRolls.setText("" + rolls);
@@ -92,21 +90,6 @@ public class Game1 extends AppCompatActivity implements View.OnTouchListener {
         }
         return true;
     }
-//
-//    @Override
-//    public void onClick(View view) {
-//        switch(view.getId()) {
-//            case R.id.bRoll:
-//                roll();
-//                break;
-//            case R.id.bRestart:
-//                restart();
-//                break;
-//            case R.id.bGame1Back:
-//                finish();
-//                break;
-//        }
-//    }
 
     Runnable mAction = new Runnable() {
         @Override public void run() {

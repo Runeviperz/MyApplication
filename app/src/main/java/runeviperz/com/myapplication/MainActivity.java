@@ -83,16 +83,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void done(User returnedUser) {
                 if (returnedUser == null) {
                     Toast.makeText(MainActivity.this, "There is a newer version available. \nOr I can't connect to the database :/", Toast.LENGTH_SHORT).show();
-                    logUserIn(returnedUser);
+                    logUserIn();
                 } else {
                     Toast.makeText(MainActivity.this, "This is the latest version!", Toast.LENGTH_SHORT).show();
-                    logUserIn(returnedUser);
+                    logUserIn();
                 }
             }
         });
     }
 
-    private void logUserIn(User returnedUser) {
+    private void logUserIn() {
         startActivity(new Intent(this, Logged_In.class));
     }
 
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         ClipboardManager clipMan = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("Copied text", tvLink.getText());
-        Toast.makeText(MainActivity.this, "Text copied", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "Copied link", Toast.LENGTH_SHORT).show();
         clipMan.setPrimaryClip(clip);
     }
 }
