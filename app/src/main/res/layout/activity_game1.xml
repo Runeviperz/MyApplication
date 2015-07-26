@@ -24,7 +24,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Highest Roll"
+            android:text="Total RNGcoins"
+            android:textStyle="bold"
             android:textSize="24sp"
             android:layout_weight="1"
             android:layout_gravity="center"
@@ -38,7 +39,7 @@
             android:textSize="24sp"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:id="@+id/tvHighscore"
+            android:id="@+id/tvRNGcoins"
             android:layout_marginBottom="10dp" />
 
         <TextView
@@ -46,6 +47,7 @@
             android:layout_height="wrap_content"
             android:text="Current Roll"
             android:textSize="24sp"
+            android:textStyle="bold"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:id="@+id/tvTitleCurrentRoll"
@@ -66,6 +68,7 @@
             android:layout_height="wrap_content"
             android:text="Total Rolls"
             android:textSize="24sp"
+            android:textStyle="bold"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:id="@+id/tvTitleTotalRolls"
@@ -95,19 +98,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Least Rolls"
+                    android:text="Bet Amount"
                     android:textSize="24sp"
+                    android:textStyle="bold"
                     android:layout_gravity="center"
-                    android:id="@+id/tvTitleLeastRolls"
+                    android:id="@+id/tvTitleBetAmount"
                     android:layout_marginBottom="10dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="0"
+                    android:hint="$$$$$$$$"
+                    android:inputType="number"
                     android:textSize="24sp"
                     android:layout_gravity="center"
-                    android:id="@+id/tvLeastRolls"
+                    android:id="@+id/tvBetAmount"
                     android:layout_marginBottom="10dp" />
 
             </LinearLayout>
@@ -121,19 +128,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Most Rolls"
+                    android:text="Bet Rolls"
                     android:textSize="24sp"
+                    android:textStyle="bold"
                     android:layout_gravity="center"
-                    android:id="@+id/tvTitleMostRolls"
+                    android:id="@+id/tvTitleBetRolls"
                     android:layout_marginBottom="10dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="0"
+                    android:hint="Rolls to win"
+                    android:gravity="center"
+                    android:inputType="number"
                     android:textSize="24sp"
                     android:layout_gravity="center"
-                    android:id="@+id/tvMostRolls"
+                    android:id="@+id/tvBetRolls"
                     android:layout_marginBottom="10dp" />
 
             </LinearLayout>
@@ -171,14 +182,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--<Button-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:text="Reset all"-->
-            <!--android:id="@+id/bResetAll"-->
-            <!--/>-->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:text="Lock In Bets"
+            android:id="@+id/bLockIn"
+            />
 
         <Button
             android:layout_width="match_parent"
